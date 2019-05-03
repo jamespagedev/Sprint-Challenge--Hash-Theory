@@ -9,6 +9,8 @@
 Answer *get_indices_of_item_weights(int *weights, int length, int limit)
 {
   // pre-condition: if weights has duplicate number, they must sum to the limit
+  // time compleixty = O(n) (worst case), O(n - k) (average case), O(1) (best case)
+  //    'k' is a value found in the parameter
 
   /* Hash Table Functions
   HashTable     create_hash_table()
@@ -78,21 +80,42 @@ int main(void)
   int weights_1 = {9};
   Answer *answer_1 = get_indices_of_item_weights(&weights_1, 1, 9);
   print_answer(answer_1); // NULL
+  // since we used malloc for the Answer instantiation... free the memory
+  if (answer_1 != NULL)
+  {
+    free(answer_1);
+    answer_1 = NULL;
+  }
 
   // TEST 2
   int weights_2[] = {4, 4};
   Answer *answer_2 = get_indices_of_item_weights(weights_2, 2, 8);
   print_answer(answer_2); // {1, 0}
+  if (answer_2 != NULL)
+  {
+    free(answer_2);
+    answer_2 = NULL;
+  }
 
   // TEST 3
   int weights_3[] = {4, 6, 10, 15, 16};
   Answer *answer_3 = get_indices_of_item_weights(weights_3, 5, 21);
   print_answer(answer_3); // {3, 1}
+  if (answer_3 != NULL)
+  {
+    free(answer_3);
+    answer_3 = NULL;
+  }
 
   // TEST 4
   int weights_4[] = {12, 6, 7, 14, 19, 3, 0, 25, 40};
   Answer *answer_4 = get_indices_of_item_weights(weights_4, 9, 7);
   print_answer(answer_4); // {6, 2}
+  if (answer_4 != NULL)
+  {
+    free(answer_4);
+    answer_4 = NULL;
+  }
 
   return 0;
 }
