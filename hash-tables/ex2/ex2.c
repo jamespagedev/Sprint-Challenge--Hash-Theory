@@ -4,24 +4,46 @@
 #include "hashtable.h"
 #include "ex2.h"
 
+// Note:
+//    I think this problem copied and pasted from the
+//    "OneWayFlight" whiteboarding challenge I did last week,
+//    so I will be using the same logic here
 char **reconstruct_trip(Ticket **tickets, int length)
 {
+  /* Hash Table Functions
+    HashTable     create_hash_table()
+    void          hash_table_insert()
+    void          hash_table_remove()
+    char*         hash_table_retrieve()
+    void          destroy_hash_table()
+    HashTable     hash_table_resize()
+  */
   HashTable *ht = create_hash_table(16);
   char **route = malloc(length * sizeof(char *));
 
   // YOUR CODE HERE
+  // first plug in the values of the source(key) and destination(value) into the hash table
+  //    by iterating over the struct tickets
+
+  //    if the source is "NONE", append the route with your first destination
+
+  //    else append the pair to the hash table
+
+  // iterate through the length of the tickets, and plug in the destinations for the sources matching the route[index]
+  //    do this until the destination is "NONE"
+
+  // free the memory of the ht and return the route
 
   return route;
 }
 
 void print_route(char **route, int length)
 {
-  for (int i = 0; i < length; i++) {
+  for (int i = 0; i < length; i++)
+  {
     printf("%s\n", route[i]);
   }
 }
-
-
 
 #ifndef TESTING
 int main(void)
