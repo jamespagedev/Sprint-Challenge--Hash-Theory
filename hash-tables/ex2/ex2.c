@@ -10,6 +10,7 @@
 //    so I will be using the same logic here
 char **reconstruct_trip(Ticket **tickets, int length)
 {
+  // time complexity = O(2n) -> O(n)
   /* Hash Table Functions
     HashTable     create_hash_table()
     void          hash_table_insert()
@@ -24,7 +25,7 @@ char **reconstruct_trip(Ticket **tickets, int length)
   // YOUR CODE HERE
   // first plug in the values of the source(key) and destination(value) into the hash table
   //    by iterating over the struct tickets
-  for (int i = 0; i < length; i++)
+  for (int i = 0; i < length; i++) // O(n) Runtime
   {
     // if the source is "NONE", append the route with your first destination
     if (strcmp(tickets[i]->source, "NONE") == 0)
@@ -41,7 +42,7 @@ char **reconstruct_trip(Ticket **tickets, int length)
   // iterate through the length of the tickets, and plug in the destinations for the sources matching the route[index]
   //    do this until the destination is "NONE"
   int index = 0;
-  while (strcmp(route[index], "NONE") != 0) // O(n)
+  while (strcmp(route[index], "NONE") != 0) // O(n) Runtime
   {
     route[index + 1] = hash_table_retrieve(ht, route[index]);
     index++;
@@ -81,7 +82,22 @@ int main(void)
   ticket_3->destination = "NONE";
   tickets[2] = ticket_3;
 
-  print_route(reconstruct_trip(tickets, 3), 3); // PDX, DCA, NONE
+  // since the method uses malloc,
+  //    it's best to instantiate it so we can free it later
+  char **trip = reconstruct_trip(tickets, 3);
+  print_route(trip, 3); // PDX, DCA, NONE
+
+  // free addresses to avoid memory leaks
+  free(ticket_1);
+  ticket_1 = NULL;
+  free(ticket_2);
+  ticket_2 = NULL;
+  free(ticket_3);
+  ticket_3 = NULL;
+  free(tickets);
+  tickets = NULL;
+  free(trip);
+  trip = NULL;
 
   return 0;
 }
