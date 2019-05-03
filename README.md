@@ -24,19 +24,38 @@ This sprint challenge is divided up into three parts: Boolean algebra (11 points
 
 During your challenge, you will be pulled aside by a PM for a 5 minute interview. During this interview, you will be expected to answer the following three questions:
 
-  * 1. What is a computer and how does it work?
-  * 2. What is an array and how does it work?
-  * 3. What is a hash table and how does it work?
+1. What is a computer and how does it work?
+
+- A computer is a device for storing and processing data.
+- The device takes a set of instructions written in binary form, and executes them.
+- The computer is also composed of multiple parts to make writing these instructions easier for the human.
+- Generally, a computer consists of a motherboard, cpu, RAM (known as Random Access Memory) for handling volitile memory, and a hard drive for handling non volitile memory.
+- A computer also supports optional IO devices such as a video card (sometimes embedded on the motherboard), a monitor, speakers, keyboard, mouse, and printer/scanner.
+
+2. What is an array and how does it work?
+
+- An array is a data structure which acts as a container of side-by-side index addresses which hold the same type of value.
+- The array can be accessed using it's own variable name when it was instantiated, and pointing to the direct address within the array to obtain a specific value.
+- Depending on the language, the value of the index address can be accessed by calling the index or the pointer to the address.
+- Other loosely type languages throw in support of array-like structures such as python lists or javascript arrays... which allow you to not only store multiple types, but also offer prototype methods
+- such as insert, pop, slice, ect...
+
+3. What is a hash table and how does it work?
+
+- A hash table is a different type of data structure used for optomized runtimes.
+- It generally consists of a key/value pair, where the key lookup is O(1) runtime, and therefor finding a value using a key would be O(n) runtime.
+- In C, you can optimize hash tables to store key/value pair in the node of a link list stored within an index of an array structure where these indexes are unique and formed together by using a hash function....
+- Which makes the indexes an O(1) lookup time complexity.
+- Also, if you wanted to store a link list as the value of the unique index, you can optomize the search time by resizing the hash table's index storage based upon the runtime to find a value in the link list or size of the link list.
+- Resizing the index can offer a way to shorten your link lists, making the worst runtime of O(n) have a smaller n number which would shorten the runtime while maintaing the space complexity tradeoff.
 
 You will receive points at the PM's discretion based on the following criteria:
 
-  * 20: Would love to have this person on my team!
-  * 14: Wouldn't mind working with this person.
-  * 10: Knowledge is lacking OR poor communication skills
-  *  6: Knowledge is lacking AND poor communication skills
-  *  2: You get 2 points for showing up
-
-
+- 20: Would love to have this person on my team!
+- 14: Wouldn't mind working with this person.
+- 10: Knowledge is lacking OR poor communication skills
+- 6: Knowledge is lacking AND poor communication skills
+- 2: You get 2 points for showing up
 
 ## Project Set Up
 
@@ -55,40 +74,41 @@ A hash table implementation has been included for you already. Your task is to g
 You can earn 35 points from the main coding portion of the sprint challenge and up to 4 extra points for completing the stretch goal. Stretch points will only be counted if all regular problems have been completed.
 
 #### [Theory of Computation](https://github.com/LambdaSchool/Sprint-Challenge--Hash-Theory/tree/master/theory) - 11 pts
-  * Boolean 1 - 3 pt
-  * Boolean 2 - 3 pt
-  * Boolean 3 - 5 pt
+
+- Boolean 1 - 3 pt
+- Boolean 2 - 3 pt
+- Boolean 3 - 5 pt
 
 #### [Hash Tables](https://github.com/LambdaSchool/Sprint-Challenge--Hash-Theory/tree/master/hash-tables) - 24 pts
-  * ex1 - 12 pts
-  * ex2 - 12 pts
+
+- ex1 - 12 pts
+- ex2 - 12 pts
 
 Both Hash Table problems will be graded as follows:
-  *  3: Code attempted
-  *  6: Code resembles the correct solution
-  * 10: Tests pass
-  * 11: Tests pass, no hash table memory leaks
-  * 12: Tests pass, no hash table memory leaks, linear runtime complexity  
 
+- 3: Code attempted
+- 6: Code resembles the correct solution
+- 10: Tests pass
+- 11: Tests pass, no hash table memory leaks
+- 12: Tests pass, no hash table memory leaks, linear runtime complexity
 
 #### [Computation Stretch](https://github.com/LambdaSchool/Sprint-Challenge--Hash-Theory/tree/master/theory) - 4 pts
-  * Truth Table - 1 pt
-  * Sum - 1 pt
-  * Carry - 2 pts
 
-
+- Truth Table - 1 pt
+- Sum - 1 pt
+- Carry - 2 pts
 
 ### Grading
 
-Students can receive up to 55 points in total for this Sprint Challenge (not including 4 extra credit points). 
+Students can receive up to 55 points in total for this Sprint Challenge (not including 4 extra credit points).
 
-  * __Challenge__: 35
-  * __Interview__: 20
+- **Challenge**: 35
+- **Interview**: 20
 
---------
+---
 
 The score distributions are as follows:
 
-  * __3__: >= 48 points
-  * __2__: >= 35 points
-  * __1__: < 34 points 
+- **3**: >= 48 points
+- **2**: >= 35 points
+- **1**: < 34 points
