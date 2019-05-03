@@ -20,24 +20,42 @@ Answer *get_indices_of_item_weights(int *weights, int length, int limit)
   */
   // YOUR CODE HERE
   // first, if length is <= 1... return NULL
+  if (length <= 1)
+  {
+    return NULL;
+  }
 
   // instantiate empty hash table to store keys for O(1) runtime on lookup for the weight
   HashTable *ht = create_hash_table(16);
   // initialize Answer as NULL for default return if pairs not found.
+  Answer *answer = NULL; // Initialize for default return
 
   // loop through length of weights
+  for (int i = 0; i < length; i++) // O(n) Runtime
+  {
+    //    instantiate key_in_check = limit - current_weight
+    int key_in_check = limit - weights[i];
+    //    if key_in_check is not in the ht, add current_weight as new_key to hash table with the current index in loop as the value
+    if (hash_table_retrieve(ht, key_in_check) == -1) // O(n) Runtime
+    {
+      hash_table_insert(ht, weights[i], i);
+    }
+    //    else pair has been found (note: key_in_check + weights[i] = limit)
+    else
+    {
+      // put answer on the heap to store the found pair
+      answer = malloc(sizeof(Answer));
+      answer->index_1 = i;
+      answer->index_2 = hash_table_retrieve(ht, key_in_check);
+      //    destroy the hash table and return answer
+      destroy_hash_table(ht);
+      return answer;
+    }
+  }
 
-  //    instantiate key_in_check = limit - current_weight
-
-  //    if key_in_check is not in the ht, add current_weight as new_key to hash table with the current index in loop as the value
-
-  //    else pair has been found (note: key_in_check + weights[i] = limit)
-
-  //        if (weights[i] > key_in_check), update Answer with... (index_1 = i) and (index_2 = value of key_in_hash_table)
-
-  //        else, update Answer with... (index_1 = current_weight_index) and (index_2 = key_in_check)
-
-  return NULL;
+  // destroy the hash table and return default answer
+  destroy_hash_table(ht);
+  return answer;
 }
 
 void print_answer(Answer *answer)
