@@ -24,16 +24,31 @@ char **reconstruct_trip(Ticket **tickets, int length)
   // YOUR CODE HERE
   // first plug in the values of the source(key) and destination(value) into the hash table
   //    by iterating over the struct tickets
-
-  //    if the source is "NONE", append the route with your first destination
-
-  //    else append the pair to the hash table
+  for (int i = 0; i < length; i++)
+  {
+    // if the source is "NONE", append the route with your first destination
+    if (strcmp(tickets[i]->source, "NONE") == 0)
+    {
+      route[0] = tickets[i]->destination;
+    }
+    // else append the pair to the hash table
+    else
+    {
+      hash_table_insert(ht, tickets[i]->source, tickets[i]->destination);
+    }
+  }
 
   // iterate through the length of the tickets, and plug in the destinations for the sources matching the route[index]
   //    do this until the destination is "NONE"
+  int index = 0;
+  while (strcmp(route[index], "NONE") != 0) // O(n)
+  {
+    route[index + 1] = hash_table_retrieve(ht, route[index]);
+    index++;
+  }
 
   // free the memory of the ht and return the route
-
+  destroy_hash_table(ht);
   return route;
 }
 
